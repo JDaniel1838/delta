@@ -1,0 +1,905 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    overflow-x:hidden;
+    scroll-behavior: smooth;
+}
+
+
+.microfono{
+    width: 100%;
+    height: 40rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(to top, hsla(214, 75%, 14%, 0.884) 0%, hsla(206, 28%, 45%, 0.781) 100%), url(../img/FONDO.jpg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.microfono >.header{
+    width: 100%;
+    height: 4rem;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.microfono >.header >a {
+    width: 10%;
+    font-size: 3rem;
+    color: #ffffff;
+    font-weight: 500;
+    margin-left: 3%;
+    text-decoration: none;
+}
+
+.linksDerecha{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.linksDerecha > a{
+    font-size: 1.4rem;
+    color: #00BFFF;
+    margin-right:3%;
+    text-decoration: none;
+    transition: .3s;
+    
+}
+
+.linksDerecha > a:hover{
+    color: #fff;
+}
+
+
+.microfonoDes{
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    width: 16rem;
+    height: 16rem;
+    padding: 2.5rem 3.3rem 3.1rem 3.3rem;
+    border-radius: 50%;
+    border: 2px solid hsl(0, 0%, 100%);
+    background-color: rgba(255, 255, 255, 0.205);
+    transition: width .2s ease, height .2s ease;
+}
+
+.microfonoDes:hover {
+    border: 2px solid #00BFFF;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.37);
+}
+
+.microfonoAct{
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    width: 20.5rem;
+    height: 20.5rem;
+    padding: 1.5rem 2.3rem 2.1rem 2.8rem;
+    border-radius: 50%;
+    border: 2px solid #FFF;
+    background-color: #00BFFF;
+    transition: width .2s ease-out, height .2s ease-out;
+}
+
+.microfonoAct:hover {
+    border: 2px solid #ffffff;
+    background-color: #00BFFF;
+    box-shadow: 0 0 20px 0 #ffffff;
+}
+
+.microfonoAct.activado{
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transition: .3s;
+}
+
+.microfonoDes.activado{
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transition: .3s;
+}
+
+
+/*----------Animacion-------------*/
+/*
+.microfonoAct{
+    animation: Sombra 1s ease infinite;
+}
+
+@keyframes Sombra{
+    from{
+    box-shadow: 0 0 20px 0 #ffffff;
+    }
+}
+*/
+/*-----------------------*/
+
+
+
+.textoMicroActivado{
+    margin-top: -1rem;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    visibility: visible;
+    opacity: 1;
+    transition: transform .3s ease, opacity .3s ease;
+    transform: translate(0, 100%);
+    text-align: center;
+}
+
+.textoIntrucciones{
+    margin-top: -1rem;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    visibility: visible;
+    opacity: 1;
+    transition: transform .3s ease, opacity .3s ease;
+    transform: translate(0, 100%);
+    text-align: center;
+}
+
+.textoMicroActivado.activado{
+    margin-top: 0;
+    font-size: 1.7rem;
+    visibility: visible;
+    transition: .3s;
+    opacity: 1;
+    transform: translate(0,100%);
+}
+
+
+.textoIntrucciones.activado{
+    margin-top: 0;
+    font-size: 1.7rem;
+    visibility: visible;
+    transition: .3s;
+    opacity: 1;
+    transform: translate(0,100%);
+}
+
+
+.ConfirmarBusqueda{
+    width: 32rem;
+    height: 6rem;
+    background-color: #fff;
+    border: 2px solid #00BFFF;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #00BFFF;
+    transition: transform .3s ease, opacity .3s ease;
+    transform: translate(0,0);
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+}
+
+
+.ConfirmarBusqueda.activado{
+    display: flex;
+    visibility: visible;
+    transition: .3s;
+    opacity: 1;
+    transform: translate(0,100%);
+}
+
+
+.BtnConfirm{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.BtnConfirm button{
+    font-size: 1.3rem;
+    background-color: #fff;
+    font-weight: 400;
+    outline: none;
+    border: 1px solid #00BFFF;
+    padding: .2rem 1rem;
+    margin-top: .5rem;
+    margin-left: 1rem;
+    border-radius: 5px;
+    color: #00BFFF;
+    cursor: pointer;
+}
+
+.BtnConfirm .si{
+    background-color: #00BFFF;
+    color: #fff;
+}
+
+
+
+/*ESTILOS CARRUSEL CONTENEDOR 1*/
+.carrusel{
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.Requisitos{
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+}
+
+.TitleRequisitos{
+    width: 100%;
+    height: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.4rem;
+    text-align: center;
+}
+
+.TitleRequisitos > h3{
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #ff4e50;
+}
+
+.conten2en1{
+    width: 100%;
+    height: 17rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.RequisitosCon1{
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    width: 49.8%;
+    height: 17rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RequisitosCon1 > img{
+    width: 11rem;
+}
+
+.RequisitosCon1 > p{
+    font-size: 2.1rem;
+    color: #FFF;
+    font-weight: 500;
+}
+
+
+.RequisitosCon2{
+    background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+    width: 49.8%;
+    height: 17rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RequisitosCon2 > img{
+    margin-top: .5rem;
+    width: 10rem;
+    margin-bottom: .5rem;
+}
+
+.RequisitosCon2 > p{
+    font-size: 2.1rem;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.Conte1en1{
+    width: 100%;
+    height: 17rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.2rem;
+}
+
+.RequisitosCon3{
+    width: 69.6%;
+    height: 100%;
+    background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RequisitosCon3 > img{
+    width: 11rem;
+    border-radius: 50%;
+    background-color: #FFF;
+    padding: 0.5rem;
+    border: .5px solid #000;
+    transition: .3s;
+}
+
+
+
+.RequisitosCon3 > p{
+    font-size: 2.1rem;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.RequisitosCon4{
+    width: 30%;
+    height: 100%;
+    background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RequisitosCon4 > img{
+    width: 11rem;
+}
+
+.RequisitosCon4 > p{
+    font-size: 2.1rem;
+    color: #FFF;
+    font-weight: 500;
+    text-align: center;
+}
+
+/*--------------------------------------*/
+
+
+
+/*ESTILOS CARRUSEL SEGUNDO CONTENEDOR RECUERDA QUE*/
+.RecuerdaQue{
+    width: 100%;
+    height: 40rem;
+    background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.RecuerdaQueText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.RecuerdaQueText > img{
+    width: 25rem;
+    height: auto;
+    align-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.RecuerdaQueText > .Textorecuerdaque{
+    font-size: 3.9rem;
+    color: #FFF;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.textoConfidencia{
+    font-size: 1.2rem;
+    color: #FFF;
+    font-weight: 500;
+    text-align: center;
+}
+
+/*--------------------------------*/
+
+/*ESTILOS TERCER CONTENEDOR BUSQUEDAS EN GOOGLE*/
+.BusquedasGoogle{
+    width: 100%;
+    height: 40rem;
+    background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.BusquedaGoogletext1{
+    font-size: 2.5rem;
+    color: #FFF;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.BusquedasGoogle > img{
+    width: 38.75rem;
+    height: auto;
+}
+
+.BusquedaGoogletext2{
+    font-size: 2.6rem;
+    color: #FFF;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/*ESTILOS DE CARRUSEL*/
+.slider-slide{
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform .2s ease-out, opacity .2s ease-out;
+    transform: translate(100%, 0%);
+    z-index: 100;
+}
+
+.slider-slide.activado {
+    opacity: 1;
+    transition: .2s;
+    z-index: 10;
+    visibility: visible;
+    transform: translate(0,0);
+}
+
+
+
+
+
+
+
+/*ESTILOS CARRUSEL tercer CONTENEDOR preguntas a delta*/
+
+.preguntasCarruselDelta{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.ContentPreguntaDELTA{
+    width: 100%;
+    height: 40rem;
+    background-image: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+}
+
+.ContentPreguntaDELTA >h3{
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    color: #f5576c;
+    margin-top: 1.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.PreguntasDELTA{
+    width: 96%;
+    height: auto;
+    margin: 0 auto 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.Pregunta{
+    width: 23%;
+    height: 11rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.3rem 0.9%;
+    transition: .4s;
+}
+
+.Pregunta:hover{
+    transition: .4s;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.37);
+}
+
+
+.Pregunta > p{
+    font-size: 1.7rem;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+}
+
+.Pregunta > img{
+    margin-top: 1rem;
+    width: 3.5rem;
+}
+
+
+/*Preguntas estilos por colores*/
+.Pregunta.azul{
+    background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+    transition: .4s;
+}
+
+.Pregunta.azul:hover{
+    transition: .4s;
+    background-image: linear-gradient(to right, #0acffe 100%, #495aff 0%);
+}
+
+.Pregunta.morado{
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    transition: .4s;
+}
+
+.Pregunta.morado:hover{
+    transition: .4s;
+    background-image: linear-gradient(to top, #330867 100%, #30cfd0 0%);
+}
+
+.Pregunta.naranja{
+    background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+    transition: .4s;
+}
+
+.Pregunta.naranja:hover{
+    background-image: linear-gradient(to right, #ff4e50 100%, #f9d423 0%);
+}
+
+
+.Pregunta.VariosColors{
+    background-image: linear-gradient(-225deg, #FF057C 0%, #8D0B93 50%, #321575 100%);
+    transition: .4s;
+}
+
+.Pregunta.VariosColors:hover{
+    background-image: linear-gradient(-225deg, #FF057C 0%, #8D0B93 100%, #321575 50%);
+    
+}
+
+
+
+/*FOOTER- FINAL DE PAGINA STYLES*/
+.footer{
+    margin-top: 2rem;
+    width: 100%;
+    height: 19rem;
+    background-color: #fff;
+    box-shadow:  0 0 6px 0 rgba(0, 0, 0, 0.37);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.divFooter{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.Texto{
+    width: 70%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.SocialMedia{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.SocialMedia > div > p{
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.SocialMedia > div > img{
+    background-color: #000;
+    padding: 1rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 0.5px solid #000;
+    transition: .3s;
+    margin: 0.5rem 0.3rem 0 0.3rem;
+    cursor: pointer;
+}
+
+.SocialMedia >div > img:hover{
+    padding: .7rem;
+    border: 0.5px solid #00BFFF;
+    background-color: #00BFFF;
+}
+
+
+.Texto > p{
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.LinksFooter > a{
+    margin: 0.5rem 1rem;
+    text-decoration: none;
+    color: #000;
+}
+
+.LinksFooter > a:hover{
+    color: #00BFFF;
+}
+
+.copy{
+    text-align: center;
+    width: 100%;
+    height: 9rem;
+    background-color: #000;
+    bottom: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.copy > p{
+    color: #fff;
+    font-weight: 600;
+}
+
+.lineatext{
+    width: 80%;
+    height: 2px;
+    background-color: #000;
+    border-radius: 2px;
+    margin: 1rem auto;
+}
+
+.LinksFooter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+
+
+/*WEB RESPONSIVE*/
+@media screen and (max-width: 1124px){
+    html{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 948px){
+    html{
+        font-size: 14px;
+    }
+
+    
+    .RequisitosCon4 > img{
+        width: 9rem;
+    }
+    
+    .RequisitosCon4 > p{
+        font-size: 1.8rem;
+        color: #FFF;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    
+    .BusquedaGoogletext1{
+    font-size: 2rem;
+    color: #FFF;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 820px){
+    html{
+        font-size: 13px;
+    }
+
+    .ContentPreguntaDELTA{
+        width: 100%;
+        height: 51rem;
+    }
+
+    .PreguntasDELTA{
+        width: 96%;
+        height: 83rem;
+        margin: 0 auto 2rem;
+    }
+
+    .Pregunta{
+        width: 32%;
+        height: 11rem;
+        margin: 0.3rem 0.5%;
+    }
+
+    .RequisitosCon4 > img{
+        width: 7rem;
+    }
+    
+    .RequisitosCon4 > p{
+        font-size: 1.4rem;
+        color: #FFF;
+        font-weight: 500;
+        text-align: center;
+    }
+}
+
+
+@media screen and (max-width: 720px){
+    html{
+        font-size: 12px;
+    }
+
+    .RequisitosCon1 > p {
+        font-size: 1.8rem;
+    }
+
+    .BusquedaGoogletext1{
+        font-size: 1.6rem;
+    }
+
+    .SocialMedia > div > img {
+        background-color: #000;
+        padding: 0.8rem;
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+@media screen and (max-width: 650px){
+    html{
+        font-size: 12px;
+    }
+
+    .microfono{
+        height:51rem;
+    }
+
+    .carrusel {
+        width: 100%;
+        height: 51rem;
+    }
+
+    .Requisitos {
+        width: 100%;
+        height: 51rem;
+    }
+
+    .BusquedasGoogle{
+        height: 51rem;
+    }
+
+    .RecuerdaQue {
+        width: 100%;
+        height: 51rem;
+    }
+
+    .conten2en1{
+        width: 100%;
+        height: 22.5rem;
+    }
+
+    .RequisitosCon2{
+        height: 22.5rem;
+    }
+
+    .Conte1en1{
+        width: 100%;
+        height: 22.5rem;
+    }
+
+    .RequisitosCon1 {
+        height: 22.5rem;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .divFooter{
+        flex-direction: column;
+    }
+    .Texto{
+        width: 100%;
+    }
+
+    .SocialMedia{
+        width: 100%;
+    }
+
+    .footer{
+        height: auto;
+    }
+
+    .Pregunta{
+        width: 49%;
+    }
+
+    .ContentPreguntaDELTA {
+        width: 100%;
+        height: 75rem;
+    }
+
+    .BusquedasGoogle > img {
+        width: 25.75rem;
+        height: auto;
+    }
+
+    .RequisitosCon1 > img {
+        width: 8rem;
+    }
+
+    .RequisitosCon1 > p {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .RequisitosCon2 > img {
+        margin-top: .5rem;
+        width: 8rem;
+        margin-bottom: .5rem;
+    }
+
+    .RequisitosCon2 > p{
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .RequisitosCon3 > img {
+        width: 8rem;
+    }
+
+    .RequisitosCon3 > p {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .textoMicroActivado{
+        font-size: 1.2rem;
+    }
+}
